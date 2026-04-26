@@ -104,22 +104,27 @@ export function AppShell({
         </aside>
 
         <div className="flex min-h-screen flex-1 flex-col">
-          <header className="sticky top-4 z-30 mb-6 flex items-center justify-between rounded-[28px] border border-white/10 bg-slate-950/70 px-4 py-4 text-white backdrop-blur md:px-6">
-            <div className="flex items-center gap-3">
+          <header className="sticky top-4 z-30 mb-6 flex items-center justify-between rounded-[28px] border border-white/10 bg-slate-950/70 px-4 py-3 text-white backdrop-blur md:px-6 md:py-4">
+            <div className="flex items-center gap-2 md:gap-3">
               <MobileNavigation role={user.role} />
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-cyan-300/80">
+              <div className="min-w-0">
+                <p className="hidden text-xs uppercase tracking-[0.25em] text-cyan-300/80 md:block">
                   TCG League
                 </p>
-                <h1 className="text-lg font-semibold md:text-xl">
+                <h1 className="text-base font-semibold md:hidden">
+                  TCG League
+                </h1>
+                <h1 className="hidden text-xl font-semibold md:block">
                   Panel de juego y comunidad
                 </h1>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               <PendingActionsMenu summary={pendingActions} />
-              <ThemeToggle />
+              <div className="hidden md:block">
+                <ThemeToggle />
+              </div>
               <UserMenu
                 displayName={profile.displayName}
                 email={user.email}

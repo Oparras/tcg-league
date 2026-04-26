@@ -52,15 +52,16 @@ export function PendingActionsMenu({
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70 transition-colors hover:bg-white/10"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-2 text-sm text-white/70 transition-colors hover:bg-white/10 md:px-3"
         >
           <Bell className="size-4 text-amber-300" />
-          {getPendingLabel(summary.total)}
+          <span className="md:hidden">{summary.total}</span>
+          <span className="hidden md:inline">{getPendingLabel(summary.total)}</span>
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-[420px] border border-white/10 bg-slate-950/95 p-2 text-white"
+        className="w-[calc(100vw-2rem)] max-w-[420px] border border-white/10 bg-slate-950/95 p-2 text-white"
       >
         <DropdownMenuLabel className="px-2 py-1 text-sm text-white/80">
           Pendientes accionables
