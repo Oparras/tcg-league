@@ -144,7 +144,7 @@ export function DashboardOverview({
   return (
     <div className="space-y-6">
       <Card className="border-white/10 bg-white/5 text-white">
-        <CardContent className="flex flex-col gap-6 py-6 xl:flex-row xl:items-center xl:justify-between">
+        <CardContent className="flex flex-col gap-6 py-6 2xl:flex-row 2xl:items-center 2xl:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.2em] text-cyan-200/70">
               Panel personal
@@ -155,19 +155,50 @@ export function DashboardOverview({
               proximos retos.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
+          <div className="grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { id: "stores", href: "/stores", label: "Ver stores", icon: Store },
-              { id: "profile", href: "/profile/me", label: "Editar perfil", icon: UserRound },
-              { id: "new-challenge", href: "/challenges/new", label: "Nuevo reto", icon: Swords },
+              {
+                id: "stores",
+                href: "/stores",
+                label: "Ver stores",
+                shortLabel: "Stores",
+                icon: Store,
+              },
+              {
+                id: "profile",
+                href: "/profile/me",
+                label: "Editar perfil",
+                shortLabel: "Perfil",
+                icon: UserRound,
+              },
+              {
+                id: "new-challenge",
+                href: "/challenges/new",
+                label: "Nuevo reto",
+                shortLabel: "Reto",
+                icon: Swords,
+              },
               {
                 id: "find-players",
                 href: "/challenges/new?browse=players",
                 label: "Buscar jugadores",
+                shortLabel: "Jugadores",
                 icon: Users,
               },
-              { id: "rankings", href: "/rankings", label: "Ver ranking", icon: Trophy },
-              { id: "chat", href: "/chat", label: "Amigos y chat", icon: MessageSquare },
+              {
+                id: "rankings",
+                href: "/rankings",
+                label: "Ver ranking",
+                shortLabel: "Ranking",
+                icon: Trophy,
+              },
+              {
+                id: "chat",
+                href: "/chat",
+                label: "Amigos y chat",
+                shortLabel: "Chat",
+                icon: MessageSquare,
+              },
             ].map((item) => {
               const Icon = item.icon;
 
@@ -176,11 +207,12 @@ export function DashboardOverview({
                   key={item.id}
                   asChild
                   variant="outline"
-                  className="justify-start rounded-2xl border-white/10 bg-slate-950/50 text-white hover:bg-white/10"
+                  className="h-11 w-full min-w-0 justify-start gap-2 rounded-2xl border-white/10 bg-slate-950/50 px-3 text-white hover:bg-white/10"
                 >
                   <Link href={item.href}>
                     <Icon className="size-4" />
-                    {item.label}
+                    <span className="sm:hidden">{item.shortLabel ?? item.label}</span>
+                    <span className="hidden sm:inline">{item.label}</span>
                   </Link>
                 </Button>
               );
